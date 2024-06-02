@@ -16,21 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
+        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -53,9 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
  late int selectedPage;
   late final PageController _pageController;
 
-List<OnBoardData> screensData = [OnBoardData(description: 'Sell your farm fresh products directly to consumers, cutting out the middleman and reducing emissions of the global supply chain.',imgName: 'assets/page1.png',title: 'Quality'),
+List<OnBoardData> screensData = [
+OnBoardData(description: 'Sell your farm fresh products directly to consumers, cutting out the middleman and reducing emissions of the global supply chain.',imgName: 'assets/page1.png',title: 'Quality'),
 OnBoardData(description: 'Our team of delivery drivers will make sure your orders are picked up on time and promptly delivered to your customers.',imgName: 'assets/page2.png',title: 'Convenient'),
-OnBoardData(description: 'We love the earth and know you do too! Join us in reducing our local carbon footprint one order at a time.' ,imgName: 'assets/paeg3.png',title: 'Local'),];
+OnBoardData(description: 'We love the earth and know you do too! Join us in reducing our local carbon footprint one order at a time.' ,imgName: 'assets/paeg3.png',title: 'Local'),
+];
 
   @override
   void initState() {

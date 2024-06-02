@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:internshala/utils/app_colors.dart';
 
+import 'sign_up4.dart';
+
 class SignUp3 extends StatefulWidget {
   const SignUp3({super.key});
   @override
@@ -111,12 +113,12 @@ class _SignUp3State extends State<SignUp3> {
                       height: 52,
                     child: GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const BussineesHours(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const WorkingHours(),
+                          ),
+                        );
                       },
                       child: const Center(
                         child: Text(
