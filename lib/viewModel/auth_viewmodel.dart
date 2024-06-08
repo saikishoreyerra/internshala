@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:internshala/models/user_model.dart';
 import 'package:internshala/repository/auth_repository.dart';
 import 'package:internshala/utils/routes/routes_names.dart';
-import 'package:internshala/utils/utils.dart';
+// import 'package:internshala/utils/utils.dart';
 import 'package:internshala/viewModel/user_view_model.dart';
 import 'package:provider/provider.dart';
 

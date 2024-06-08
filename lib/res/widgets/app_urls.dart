@@ -6,4 +6,8 @@ class AppUrls {
   static var moviesBaseUrl =
       'https://dea91516-1da3-444b-ad94-c6d0c4dfab81.mock.pstmn.io/';
   static var moviesListEndPoint = '${moviesBaseUrl}movies_list';
+
+  static var zipcodesUrl = 'https://api.postalpincode.in/pincode/';
+
+  static var demoUrl = "https://jsonplaceholder.typicode.com/posts/1";
 }

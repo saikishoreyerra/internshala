@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:internshala/utils/app_colors.dart';
 
 import 'sign_up2.dart';
@@ -110,7 +111,7 @@ TextEditingController reenterPassController = TextEditingController();
                       height: 50,
                       width: 100,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 9),
+                        padding:  const EdgeInsets.symmetric(vertical: 9),
                         child: Image.asset('assets/apple.png'),
                       ),
                     ),
@@ -144,28 +145,28 @@ TextEditingController reenterPassController = TextEditingController();
                 const SizedBox(
                   height: 30,
                 ),
-                inputTxtfield('Full Name',fullNameController,Icons.person_outlined),
+                inputTxtfield('Full Name',fullNameController,Icons.person_outlined,TextInputType.name),
                 
                 const SizedBox(
                   height: 15,
                 ),
                
-                 inputTxtfield('Email Address',emailController,Icons.alternate_email),
+                 inputTxtfield('Email Address',emailController,Icons.alternate_email,TextInputType.emailAddress),
                 const SizedBox(
                   height: 15,
                 ),
-                 inputTxtfield('Phone Number',phoneController,Icons.phone_outlined),
+                 inputTxtfield('Phone Number',phoneController,Icons.phone_outlined,TextInputType.number),
                 
                 const SizedBox(
                   height: 15,
                 ),
-                inputTxtfield('Password',passwordController,Icons.lock_outline),
+                inputTxtfield('Password',passwordController,Icons.lock_outline,TextInputType.text),
                 const SizedBox(
                   height: 15,
                 ),
-                inputTxtfield('Re-enter Password',reenterPassController,Icons.lock_outline),
-                const SizedBox(
-                  height: 110,
+                inputTxtfield('Re-enter Password',reenterPassController,Icons.lock_outline,TextInputType.text),
+                 SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.09,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,15 +186,8 @@ TextEditingController reenterPassController = TextEditingController();
                             fontFamily: "BeVietnam"),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(35),
-                        color: AppColors.themeOrangeColor,
-                      ),
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: 52,
-                      child: GestureDetector(
-                        onTap: () {
+                    GestureDetector(
+                      onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -201,6 +195,13 @@ TextEditingController reenterPassController = TextEditingController();
                             ),
                           );
                         },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35),
+                          color: AppColors.themeOrangeColor,
+                        ),
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: 52,
                         child: const Center(
                           child: Text(
                             'Continue',
@@ -223,7 +224,7 @@ TextEditingController reenterPassController = TextEditingController();
     );
   }
 
-  Widget inputTxtfield(String hintText,TextEditingController txtController,IconData iconName){
+  Widget inputTxtfield(String hintText,TextEditingController txtController,IconData iconName,TextInputType keyboardType){
     return Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -231,16 +232,17 @@ TextEditingController reenterPassController = TextEditingController();
                   ),
                   child:  Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: TextField(
+                    child: TextField(keyboardType: keyboardType,
                       controller: txtController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon:  Icon(iconName),
                         hintText: hintText,
-                        hintStyle: const TextStyle(
+                        hintStyle:  TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: "BeVietnam"),
+                            fontFamily: "BeVietnam",
+                            color: Colors.black.withOpacity(0.3)),
                       ),
                     ),
                   ),

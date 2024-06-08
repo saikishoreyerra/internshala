@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:internshala/utils/app_colors.dart';
+import 'package:internshala/viewModel/registeration_view_model.dart';
 import 'package:internshala/views/login_screen.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => RegisterationViewModel()),
+        // ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ],
+      child: MyApp(),
+    ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -14,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         
@@ -55,7 +65,7 @@ OnBoardData(description: 'We love the earth and know you do too! Join us in redu
 
   @override
   void dispose() {
-    // TODO: implement dispose
+ 
     super.dispose();
     _pageController.dispose();
 
@@ -66,6 +76,7 @@ OnBoardData(description: 'We love the earth and know you do too! Join us in redu
     // const pageCount = 2;
 
     return MaterialApp(
+      
       title: 'Page view dot indicator',
       theme: ThemeData(
         primarySwatch: Colors.blue,
