@@ -14,6 +14,70 @@ class RegisterationViewModel with ChangeNotifier{
 
   bool get isLoading => _isLoading;
 
+  bool _isFullNameValid = false;
+  bool get isFullNameValid => _isFullNameValid;
+
+  void validateFullName({required String  fullName}){
+    if(fullName.length > 3){
+       _isFullNameValid = true;
+    }else{
+      _isFullNameValid = false;
+    }
+   continueBtnEnable();
+    notifyListeners();
+  }
+
+
+  bool _isEmailValid = false;
+  bool get isEmailValid => _isEmailValid;
+
+  void isValidEmail(String email) {
+  final RegExp emailRegex = RegExp(
+    r'^[a-zA-Z0-9.a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+',
+  );
+  _isEmailValid = emailRegex.hasMatch(email);
+   continueBtnEnable();
+    notifyListeners();
+}
+
+  bool _isPhoneValid = false;
+  bool get isPhoneValid => _isPhoneValid;
+
+void validateMobile(String value) {
+// Indian Mobile number are of 10 digit only
+    _isPhoneValid = value.length != 10 ? false : true;
+      continueBtnEnable();
+    notifyListeners();
+  }
+
+
+  bool _isPasswordValid = false;
+  bool get isPasswordValid => _isPasswordValid;
+
+void validatePassword(String value) {
+    _isPasswordValid = value.length > 4 ? true : false;
+continueBtnEnable();
+    notifyListeners();
+  }
+
+  bool _isConfirmPasswordValid = false;
+  bool get isConfirmPasswordValid => _isConfirmPasswordValid;
+
+void validateConfirmPassword(String value,String passTxt) {
+    _isConfirmPasswordValid = (value.length > 4 && value == passTxt) ? true : false;
+continueBtnEnable();
+    notifyListeners();
+  }
+
+
+  bool _isContinueEnable = false;
+  bool get isContinueEnable => _isContinueEnable;
+
+void continueBtnEnable() {
+    _isContinueEnable = isConfirmPasswordValid && isPasswordValid && isPhoneValid && isEmailValid && isFullNameValid;
+  }
+
+
   void setLoading(bool loading) {
     _isLoading = loading;
     notifyListeners();

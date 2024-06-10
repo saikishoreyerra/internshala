@@ -7,9 +7,7 @@ import 'package:internshala/utils/app_colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-import '../repository/registration_repository.dart';
 import '../viewModel/registeration_view_model.dart';
-import '../viewModel/user_view_model.dart';
 import 'registration/sign_up.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,14 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-   WidgetsBinding.instance.addPostFrameCallback((_){
-
-  // Add Your Code here.
-  Provider.of<RegisterationViewModel>(context, listen: false).fetchPostsApi();
-});
-   
-
     
   }
   @override
