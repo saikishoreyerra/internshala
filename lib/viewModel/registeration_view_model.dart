@@ -77,6 +77,70 @@ void continueBtnEnable() {
     _isContinueEnable = isConfirmPasswordValid && isPasswordValid && isPhoneValid && isEmailValid && isFullNameValid;
   }
 
+  
+
+  bool _isBussinessNameValid = false;
+  bool get isBussinessNameValid => _isBussinessNameValid;
+
+  void validateBussinessName({required String bussinessName}){
+    if(bussinessName.length > 3){
+       _isBussinessNameValid = true;
+    }else{
+      _isBussinessNameValid = false;
+    }
+   part2ContinueBtnEnable();
+   notifyListeners(); 
+  }
+
+  bool _isInformalNameValid = false;
+  bool get isInformalNameValid => _isInformalNameValid;
+
+   void validateInformalName({required String informalName}){
+    if(informalName.length > 3){
+       _isInformalNameValid = true;
+    }else{
+      _isInformalNameValid = false;
+    }
+   part2ContinueBtnEnable();
+   notifyListeners(); 
+  }
+
+  bool _isStreetAddressValid = false;
+  bool get isStreetAddressValid => _isStreetAddressValid;
+
+  void validateStreetAddress({required String streetAddress}){
+    _isStreetAddressValid = streetAddress.length > 4 ? true : false;
+    part2ContinueBtnEnable();
+   notifyListeners(); 
+  }
+
+  bool _isCityValid = false;
+  bool get isCityValid => _isCityValid;
+
+  void validateCity({required String city}){
+    _isCityValid = city.length > 3 ? true : false;
+    part2ContinueBtnEnable();
+   notifyListeners(); 
+  }
+  
+
+  bool _isZipAvailable = false;
+  bool get isZipAvailable => _isZipAvailable;
+
+  void validateZipCode(){
+   _isZipAvailable = (zipCodesList.data?.first.state?.length ?? 0) > 0 ? true : false;
+   part2ContinueBtnEnable();
+   notifyListeners(); 
+  }
+
+
+  bool _isPart2ContinueEnable = false;
+  bool get isPart2ContinueEnable => _isPart2ContinueEnable;
+
+  void part2ContinueBtnEnable(){
+    _isPart2ContinueEnable = isBussinessNameValid && isInformalNameValid && isStreetAddressValid && isCityValid && isZipAvailable;
+  print(_isPart2ContinueEnable);
+  }
 
   void setLoading(bool loading) {
     _isLoading = loading;
@@ -102,6 +166,7 @@ bool _isFetchZipCode = false;
     }else if(response.status == Status.loading){
       _isLoading=true;
     }
+    validateZipCode();
     notifyListeners();
   }
 
